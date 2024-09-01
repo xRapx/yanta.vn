@@ -19,17 +19,23 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
+         
+         Log::info('After Login:', $request->all());
+
+
         // Lấy thông tin đăng nhập
         $credentials = $request->only('email', 'password');
 
         // Thử đăng nhập
         // Đăng nhập thành công
-        if (Auth::attempt($credentials)) return redirect('/');
-
-
-        // Đăng nhập thất bại
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+        if (Auth::attempt($credentials)) {
+            // Đăng nhập thành công
+            return redirect('/');
+        } else {
+            // Đăng nhập thất bại
+            return back()->withErrors([
+                'email' => 'Email không tồn tại vui lòng đăng ký.',
+            ]);
+        }
     }
 }

@@ -18,10 +18,13 @@ class RegisterController extends Controller
 
 		// valtidate input
 		$request->validate([
-			'name' => 'required|string|max:20',
-			'email' => 'required|string|email|max:20|unique:users',
-			'password' => 'required|string|min:8|confirmed',
-		]);
+            'name' => 'required|string|max:20',
+            'email' => 'required|string|email|max:20|unique:users',
+            'password' => 'required|string|min:3|confirmed',
+        ]);
+
+		// Log dữ liệu đầu vào của form
+        Log::info('After Validate==>>> :', $request->all());
 
 		$user = User::create([
             'name' => $request->name,

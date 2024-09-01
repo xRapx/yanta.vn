@@ -12,7 +12,7 @@
 	<!--[if IE]>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<![endif]-->
-	
+
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
@@ -23,8 +23,9 @@
 	<link rel="stylesheet" href="{{asset('css/solid.min.css')}}">
 	<link rel="stylesheet" href="{{asset('css/fontawesome.min.css')}}">
 	<link rel="stylesheet" href="{{asset('css/font-awesome.css')}}">
-	 <link rel="stylesheet" href="{{asset('css/main.css')}}" class="color-switcher-link">
+	<link rel="stylesheet" href="{{asset('css/main.css')}}" class="color-switcher-link">
 	<link rel="stylesheet" href="{{asset('css/shop.css')}}" class="color-switcher-link">
+
 
 	<script src="js/vendor/modernizr-custom.js"></script>
 
@@ -39,6 +40,7 @@
 	<!--[if lt IE 9]>
 		<div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="color-main">upgrade your browser</a> to improve your experience.</div>
 	<![endif]-->
+
 
 	<div class="preloader">
 		<div class="preloader_image"></div>
@@ -142,11 +144,13 @@
 	</div>
 
 
-	
+
 
 	<!-- wrappers for visual page editor and boxed version of template -->
 	<div id="canvas">
 		<div id="box_wrapper">
+
+			<div>@yield('content')</div>
 
 			<!-- template sections -->
 
@@ -216,26 +220,39 @@
 							</div>
 							<div class="col-xl-2 col-5 text-sm-right text-center">
 								<!-- eof main nav -->
-								<ul class="d-flex justify-content-between  list-unstyled">
-								@if(Auth::check())
-									@if(Auth::user()->hasRole('admin'))
-										<li>
-											<a href="/login">Hello Admin</a>
+								<ul class="row g-1 list-unstyled w-full">
+									<!-- check Admin -->
+									@if(auth()->check())
+										@if(auth()->user()->is_admin)
+										<li class="col">
+											<p>{{ auth()->user()->name }}!</p>
+											<form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">
+												@csrf
+											</form>
+											
 										</li>
-									@else
-										<li class="user-avatar">
-											<span>Hello User</span>
+										@else
+										<li class="col">										
+											<p>{{ auth()->user()->name }}!</p>										
+											<form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">
+												@csrf
+											</form>
+											
 										</li>
 									@endif
-								@else
-									<li>
-										<a href="/login"><button class="btn-outline-primary btn-sm text-black">Login</button></a>
+										<li class="col">
+											<button id="logout-button" class="btn-primary btn-sm">Logout</button>
+										</li>
+									<!-- End check admin-->
+									@else
+									<li class="col">
+										<button class="btn-primary btn-sm"><a href="/login" class="text-decoration-none text-white">Login</a></button>
 									</li>
-									<li>
-										<a href="/register" ><button class="btn-outline-primary btn-sm text-black">SignUp</button></a>
+									<li class="col">
+										<button class="btn-primary btn-sm"><a href="/register" class="text-decoration-none text-white">Sign Up</a></button>
 									</li>
-								@endif
-									<li>
+									@endif
+									<li >
 										<a href="#" class="btn btn-outline-secondary p-0 border-0">
 											<img src="{{asset('images/vietnam_flag.png')}}" width="40px" class="img-fluid d-block" />
 										</a>
@@ -251,6 +268,7 @@
 				<!--eof topline-->
 
 			</div>
+
 
 			<section class="page_slider">
 				<div class="flexslider">
@@ -742,10 +760,14 @@
 		</div><!-- eof #box_wrapper -->
 	</div><!-- eof #canvas -->
 
-	
 	<script src="{{asset('js/compressed.js')}}"></script>
 	<script src="{{asset('js/main.js')}}"></script>
-	
+	<script>
+		document.getElementById('logout-button').addEventListener('click', function() {
+   		document.getElementById('logout-form').submit();
+		});
+	</script>
+
 </body>
 
 </html>

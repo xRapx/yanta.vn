@@ -41,6 +41,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
+
+
 //hidding menu elements that do not fit in menu width
 //processing center logo
 function menuHideExtraElements() {

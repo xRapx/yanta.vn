@@ -1,6 +1,23 @@
-@extends('index')
 
-@section('content')
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yanta.vn</title>
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+	<link rel="stylesheet" href="{{asset('css/animations.css')}}">
+	<link rel="stylesheet" href="{{asset('css/regular.min.css')}}">
+	<link rel="stylesheet" href="{{asset('css/brands.min.css')}}">
+	<link rel="stylesheet" href="{{asset('css/solid.min.css')}}">
+	<link rel="stylesheet" href="{{asset('css/fontawesome.min.css')}}">
+	<link rel="stylesheet" href="{{asset('css/font-awesome.css')}}">
+	<link rel="stylesheet" href="{{asset('css/main.css')}}" class="color-switcher-link">
+	<link rel="stylesheet" href="{{asset('css/shop.css')}}" class="color-switcher-link">
+</head>
+<body>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -33,4 +50,6 @@
         </div>
     </div>
 </div>
-@endsection
+
+</body>
+</html>
