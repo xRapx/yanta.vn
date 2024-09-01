@@ -6,10 +6,10 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LogoutController;
 
 
-Route::view('/', 'HTML_Layout_tinh.layout');
+Route::view('/', 'index');
 Route::view('/login', 'auth.login')->name('login');
 Route::view('/register', 'auth.register')->name('register');
-Route::view('/logout', 'HTML_Layout_tinh.layout')->name('logout');
+Route::view('/logout', 'index')->name('logout');
 
 // Route::view('/admin', 'HTML_Layout_tinh.layout')->name('layout');
 
