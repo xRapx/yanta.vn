@@ -1,2 +1,11 @@
+[build]
+  publish = "public"
+  command = "composer install && php artisan migrate --force && php artisan config:cache && php artisan route:cache"
+
 [build.environment]
-PHP_VERSION = "8.2"
+  PHP_VERSION = "8.2"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.php"
+  status = 200
