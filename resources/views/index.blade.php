@@ -225,10 +225,10 @@
 									@if(auth()->check())
 										@if(auth()->user()->is_admin)
 										<li class="col">
-											<p>{{ auth()->user()->name }}!</p>
+											<p><a href="/admin">{{ auth()->user()->name }}</a>!</p>
 											<form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">
 												@csrf
-											</form>
+											</form> 
 											
 										</li>
 										@else
