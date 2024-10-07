@@ -23,8 +23,7 @@
                 <div class="card">
                     <div class="card-header">{{ __('Login') }}</div>
                     <div class="card-body">
-                        <!-- <form  method="POST" action="{{ route('login') }}"> -->
-                        <form id="login_form">
+                        <form  method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group has-placeholder">
                                 <label for="signupemail">Email<span class="required">*</span></label>
@@ -51,7 +50,7 @@
             </div>
         </div>
     </div>
-    <script>
+    <!-- <script>
         var form = document.getElementById('login_form')
         var err = document.getElementById('error')
 
@@ -81,7 +80,7 @@
             }
 
         })
-    </script>
+    </script> -->
 </body>
 
 </html>

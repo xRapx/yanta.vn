@@ -11,7 +11,11 @@ use Illuminate\Support\Facades\Log;
 
 class RegisterController extends Controller
 {
-	public function register(Request $request){
+    public function index()
+    {
+        return view('auth.register');
+    }
+	public function create(Request $request){
 
 		// Log dữ liệu đầu vào của form
         Log::info('Login attempt:', $request->all());

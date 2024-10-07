@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -23,15 +24,18 @@ class LoginController extends Controller
 
         // Lấy thông tin đăng nhập
         $credentials = $request->only('email', 'password');
-        // Đăng nhập thành công
-        if (Auth::attempt($credentials)) {
-            // Đăng nhập thành công
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Đăng nhập thành công',
-                'redirect_url' => url('/')
-            ], 200);
-        } else {
+        // Tìm role trong database
+        $user = User::where('email', $request->email)->first();
+        
+        if($user && Auth::attempt($credentials)){    
+            // Kiểm tra quyền admin
+            if($user->role === 'admin') {
+                return redirect('/admin/users');  
+            }
+            // Đăng nhập thành công, trả về trang chủ
+            return redirect('/');  
+
+        } else {          
             // Đăng nhập thất bại
             return response()->json([
                 'status' => 'error',

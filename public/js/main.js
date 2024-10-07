@@ -5,40 +5,40 @@
 var $body = $('body');
 var $window = $(window);
 
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('.contact-form.sign-in');
-    form.addEventListener('submit', function(event) {
-        event.preventDefault(); // Ngăn chặn form gửi đi mặc định
+// document.addEventListener('DOMContentLoaded', function() {
+//     const form = document.querySelector('.contact-form.sign-in');
+//     form.addEventListener('submit', function(event) {
+//         event.preventDefault(); // Ngăn chặn form gửi đi mặc định
 
-        // Lấy giá trị từ các trường input
-        const name = document.getElementById('signname').value;
-        const password = document.getElementById('signpassword').value;
+//         // Lấy giá trị từ các trường input
+//         const name = document.getElementById('signname').value;
+//         const password = document.getElementById('signpassword').value;
 
-        // Tạo đối tượng chứa dữ liệu
-        const formData = {
-            name: name,
-            password: password
-        };
+//         // Tạo đối tượng chứa dữ liệu
+//         const formData = {
+//             name: name,
+//             password: password
+//         };
 
-        // Gửi dữ liệu lên CMS bằng fetch API
-        fetch('/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
-            // Xử lý phản hồi từ server tại đây
-			window.location.href = '/'
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-    });
-});
+//         // Gửi dữ liệu lên CMS bằng fetch API
+//         fetch('/', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify(formData)
+//         })
+//         .then(response => response.json())
+//         .then(data => {
+//             console.log('Success:', data);
+//             // Xử lý phản hồi từ server tại đây
+// 			window.location.href = '/'
+//         })
+//         .catch((error) => {
+//             console.error('Error:', error);
+//         });
+//     });
+// });
 
 
 
@@ -1011,43 +1011,43 @@ function documentReadyInit() {
 	/////////////////////////////////////////////////
 
 	//contact form processing
-	$('form.contact-form').on('submit', function( e ){
-		e.preventDefault();
-		var $form = $(this);
-		$($form).find('.contact-form-respond').remove();
+	// $('form.contact-form').on('submit', function( e ){
+	// 	e.preventDefault();
+	// 	var $form = $(this);
+	// 	$($form).find('.contact-form-respond').remove();
 
-		//checking on empty values
-		$($form).find('[aria-required="true"], [required]').each(function(index) {
-			var $thisRequired = $(this);
-			if (!$thisRequired.val().length) {
-				$thisRequired
-					.addClass('invalid')
-					.on('focus', function(){
-						$thisRequired
-							.removeClass('invalid');
-					});
-			}
-		});
-		//if one of form fields is empty - exit
-		if ($form.find('[aria-required="true"], [required]').hasClass('invalid')) {
-			return;
-		}
+	// 	//checking on empty values
+	// 	$($form).find('[aria-required="true"], [required]').each(function(index) {
+	// 		var $thisRequired = $(this);
+	// 		if (!$thisRequired.val().length) {
+	// 			$thisRequired
+	// 				.addClass('invalid')
+	// 				.on('focus', function(){
+	// 					$thisRequired
+	// 						.removeClass('invalid');
+	// 				});
+	// 		}
+	// 	});
+	// 	//if one of form fields is empty - exit
+	// 	if ($form.find('[aria-required="true"], [required]').hasClass('invalid')) {
+	// 		return;
+	// 	}
 
 		//sending form data to PHP server if fields are not empty
-		var request = $form.serialize();
-		var ajax = jQuery.post( "/", request )
-			.done(function( data ) {
-				$($form).find('[type="submit"]').attr('disabled', false).parent().append('<div class="contact-form-respond color-main mt-20">'+data+'</div>');
-				//cleaning form
-				var $formErrors = $form.find('.form-errors');
-				if ( !$formErrors.length ) {
-					$form[0].reset();
-				}
-			})
-			.fail(function( data ) {
-				$($form).find('[type="submit"]').attr('disabled', false).blur().parent().append('<div class="contact-form-respond color-main mt-20">Mail cannot be sent. You need PHP server to send mail.</div>');
-			})
-	});
+	// 	var request = $form.serialize();
+	// 	var ajax = jQuery.post( "/", request )
+	// 		.done(function( data ) {
+	// 			$($form).find('[type="submit"]').attr('disabled', false).parent().append('<div class="contact-form-respond color-main mt-20">'+data+'</div>');
+	// 			//cleaning form
+	// 			var $formErrors = $form.find('.form-errors');
+	// 			if ( !$formErrors.length ) {
+	// 				$form[0].reset();
+	// 			}
+	// 		})
+	// 		.fail(function( data ) {
+	// 			$($form).find('[type="submit"]').attr('disabled', false).blur().parent().append('<div class="contact-form-respond color-main mt-20">Mail cannot be sent. You need PHP server to send mail.</div>');
+	// 		})
+	// });
 
 
 	//search modal

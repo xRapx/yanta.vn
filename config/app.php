@@ -20,10 +20,6 @@ return [
     | Application Environment
     |--------------------------------------------------------------------------
     |
-    |Giá trị này xác định "môi trường" ứng dụng của bạn hiện đang
-|Chạy vào. Điều này có thể xác định cách bạn muốn định cấu hình
-|Dịch vụ ứng dụng sử dụng.Đặt cái này trong tệp ".ENV" của bạn.
-    |
     */
 
     'env' => env('APP_ENV', 'production'),
@@ -45,10 +41,6 @@ return [
     |--------------------------------------------------------------------------
     | Application URL
     |--------------------------------------------------------------------------
-    |
-    |URL này được sử dụng bởi bảng điều khiển để tạo URL đúng cách khi sử dụng
-|Các công cụ dòng chỉ huy nghệ nhân.Bạn nên đặt cái này thành gốc của
-|Ứng dụng sao cho nó có sẵn trong các lệnh Artisan.
     |
     */
 
@@ -122,5 +114,4 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
-
 ];

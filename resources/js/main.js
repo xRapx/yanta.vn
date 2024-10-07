@@ -5,40 +5,40 @@
 var $body = $('body');
 var $window = $(window);
 
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('.contact-form.sign-in');
-    form.addEventListener('submit', function(event) {
-        event.preventDefault(); // Ngăn chặn form gửi đi mặc định
+// document.addEventListener('DOMContentLoaded', function() {
+//     const form = document.querySelector('.contact-form.sign-in');
+//     form.addEventListener('submit', function(event) {
+//         event.preventDefault(); // Ngăn chặn form gửi đi mặc định
 
-        // Lấy giá trị từ các trường input
-        const name = document.getElementById('signname').value;
-        const password = document.getElementById('signpassword').value;
+//         // Lấy giá trị từ các trường input
+//         const name = document.getElementById('signname').value;
+//         const password = document.getElementById('signpassword').value;
 
-        // Tạo đối tượng chứa dữ liệu
-        const formData = {
-            name: name,
-            password: password
-        };
+//         // Tạo đối tượng chứa dữ liệu
+//         const formData = {
+//             name: name,
+//             password: password
+//         };
 
-        // Gửi dữ liệu lên CMS bằng fetch API
-        fetch('/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
-            // Xử lý phản hồi từ server tại đây
-			window.location.href = '/'
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-    });
-});
+//         // Gửi dữ liệu lên CMS bằng fetch API
+//         fetch('/', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify(formData)
+//         })
+//         .then(response => response.json())
+//         .then(data => {
+//             console.log('Success:', data);
+//             // Xử lý phản hồi từ server tại đây
+// 			window.location.href = '/'
+//         })
+//         .catch((error) => {
+//             console.error('Error:', error);
+//         });
+//     });
+// });
 
 // modal
 var exampleModal = document.getElementById('exampleModal')
