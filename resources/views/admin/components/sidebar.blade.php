@@ -57,7 +57,7 @@
 				<!-- Dashboard -->
 				<!-- ---------------------------------- -->
 				<li class="sidebar-item">
-					<a class="sidebar-link" href="{{url('admin/users')}}">
+					<a class="sidebar-link" href="{{route('user.index')}}">
 						<iconify-icon icon="solar:screencast-2-linear" class="aside-icon"></iconify-icon>
 						<span class="hide-menu">Users Contact</span>
 					</a>

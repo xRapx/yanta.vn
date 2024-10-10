@@ -53,6 +53,7 @@ Route::prefix('admin')->middleware('admin')->group(function(){
     // users details
     Route::get('/users', [UserController::class, 'index'])->name('user.index');
     Route::get('/users/create', [UserController::class, 'create'])->name('user.create');
+    Route::post('/users/store', [UserController::class, 'store'])->name('user.store');
     Route::get('/users/details/{id}', [UserController::class, 'show'])->name('user.details');
     Route::put('/users/details/{id}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/users/details/{id}', [UserController::class, 'destroy'])->name('user.destroy');

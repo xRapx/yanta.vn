@@ -22,6 +22,24 @@ class UserController extends Controller
         $users = User::all();
         return view('admin.content.users', compact('users'));
     }
+    public function create()
+    {
+        return view('admin.content.form.user');
+    }
+
+    public function store(Request $request)
+    {
+        Log::info('Store attempt:', $request->all());
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->status = $request->has('status') ? 1 : 0; // Chuyển đổi giá trị 'on' thành 1, nếu không có thì là 0
+        $user->save();
+
+        return redirect()->route('user.index');
+    }
 
     public function filter(Request $request, $category)
     {
