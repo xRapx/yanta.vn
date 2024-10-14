@@ -15,7 +15,7 @@
 					<a href="javascript:void(0)" class="dropdown-toggle u-dropdown w-100 text-white
                   d-block
                   position-relative
-                " id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Markarn Doe</a>
+                " id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
 					<div class="dropdown-menu animated flipInY" aria-labelledby="dropdownMenuLink">
 						<a class="dropdown-item d-flex gap-2" href="page-user-profile.html">
 							<i data-feather="user" class="feather-sm text-info "></i>

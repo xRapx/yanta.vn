@@ -10,12 +10,6 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\ServiceFiveController;
-use App\Http\Controllers\ServiceFourController;
-use App\Http\Controllers\ServiceOneController;
-use App\Http\Controllers\ServiceSixController;
-use App\Http\Controllers\ServiceThreeController;
-use App\Http\Controllers\ServiceTwoController;
 use App\Http\Controllers\UserController;
 use App\Mail\MyTestEmail;
 use Illuminate\Support\Facades\Log;
@@ -28,12 +22,9 @@ Route::get('/service',[IndexController::class , 'service'])->name('service');
 Route::get('/contact', [IndexController::class , 'contact'])->name('contact');
 
 // services details
-Route::resource('service1', ServiceOneController::class);
-Route::resource('service2', ServiceTwoController::class);
-Route::resource('service3', ServiceThreeController::class);
-Route::resource('service4', ServiceFourController::class);
-Route::resource('service5', ServiceFiveController::class);
-Route::resource('service6', ServiceSixController::class);
+Route::get('/service/details/{id}', [ServiceController::class, 'details'])->name('service.details');
+Route::get('/apiService' , [IndexController::class , 'apiService'])->name('apiService');
+
 
 // blog details
 Route::get('/blog/details', function () {return view('pages.details.blog');})->name('blog.details');
@@ -70,12 +61,12 @@ Route::prefix('admin')->middleware('admin')->group(function(){
     Route::post('/posts/destroy/{id}', [PostController::class,'destroy'])->name('posts.destroy');
 
     // services
-    // Route::get('/services', [ServiceController::class ,'index']) ->name('services.index');
-    // Route::get('/services/create', [ServiceController::class, 'create'])->name('services.create');
-    // Route::get('/services/details/{id}', [ServiceController::class, 'show'])->name('services.show');
-    // Route::put('/services/update/{id}', [ServiceController::class, 'update'])->name('services.update');
-    // Route::post('/services/edit/{id}', [ServiceController::class,'edit'])->name('services.edit');
-    // Route::post('/services/destroy/{id}', [ServiceController::class,'destroy'])->name('services.destroy');
+    Route::get('/services', [ServiceController::class ,'home']) ->name('services.home');
+    Route::get('/services/create', [ServiceController::class, 'create'])->name('services.create');
+    Route::get('/services/details/{id}', [ServiceController::class, 'show'])->name('services.show');
+    Route::put('/services/update/{id}', [ServiceController::class, 'update'])->name('services.update');
+    Route::post('/services/edit/{id}', [ServiceController::class,'edit'])->name('services.edit');
+    Route::post('/services/destroy/{id}', [ServiceController::class,'destroy'])->name('services.destroy');
 
     // images
     Route::get('/gallery', [GalleryController::class ,'index']) ->name('gallery.index');

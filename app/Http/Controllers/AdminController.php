@@ -14,6 +14,6 @@ class AdminController extends Controller
         if($user && $user->role === 'admin' && $user->status){
             return view('admin.content.users');
         }
-        return view('auth.login');
+        return view('pages.home');
     }
 }

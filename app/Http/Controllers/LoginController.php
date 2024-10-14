@@ -13,7 +13,7 @@ class LoginController extends Controller
     {
         // Log dữ liệu đầu vào của form
         Log::info('Login attempt:', $request->all());
-
+        
         // Validate dữ liệu đầu vào
         $request->validate([
             'email' => 'required|email',

@@ -131,12 +131,12 @@
 						<div class="row">
 							<div class="col-sm-12">
 								<div class="form-group">
-								<button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-                                <span class="">
-                                    <a href="{{route('register.index')}}">Register</a>
-                                </span>
+									<button type="submit" class="btn btn-primary">
+										Login
+									</button>
+									<span class="">
+										<a href="{{route('register.index')}}">Register</a>
+									</span>
 								</div>
 							</div>
 							<a class="register_modal close-modal" data-dismiss="modal" aria-label="Close" href="#register_modal"><span aria-hidden="true">Forgot Password?</span></a>
@@ -186,7 +186,7 @@
 					</div>
 				</div>
 			</section>
-			
+
 			@if (request()->is('/'))
 
 			<div class="header_absolute header_under_slider ds">
@@ -253,25 +253,8 @@
 
 						<div class="col-12 col-md-6 col-lg-3 animate" data-animation="fadeInUp">
 							<div class="widget widget_archive">
-								<ul>
-									<li>
-										<a href="{{route('service1.index')}}">Dịch vụ kênh truyền</a>
-									</li>
-									<li>
-										<a href="{{ route('service2.index')}}">Dịch vụ máy chủ đám mây</a>
-									</li>
-									<li>
-										<a href="{{ route('service3.index')}}">Dịch vụ quảng cáo</a>
-									</li>
-									<li>
-										<a href="{{ route('service4.index')}}">Dịch vụ data Sponsor</a>
-									</li>
-									<li>
-										<a href="{{ route('service5.index')}}">Giải pháp Camera giám sát</a>
-									</li>
-									<li>
-										<a href="{{ route('service6.index')}}">Giải pháp giao thông thông minh</a>
-									</li>
+								<ul id="table">
+
 								</ul>
 							</div>
 
@@ -301,6 +284,30 @@
 			document.getElementById('logout-form').submit();
 		});
 	</script> -->
+	<script>
+		var table = document.getElementById('table');
+		table.innerHTML = '';
+		fetch("{{ route('apiService') }}", {
+				method: 'GET',
+				headers: {
+					'X-Requested-With': 'XMLHttpRequest',
+					'Content-Type': 'application/json',
+				},
+			})
+			.then(res => res.json())
+			.then(data => {
+				console.log(data);
+				data.forEach(service => {
+					table.innerHTML += `
+                <li>
+                    <a href="{{ route('service.details', '') }}/${service.id}">${service.title}</a>
+                </li>
+            `;
+				});
+			})
+			.catch(error => console.error('Error:', error));
+	</script>
+
 
 </body>
 

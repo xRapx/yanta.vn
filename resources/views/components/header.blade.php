@@ -20,13 +20,7 @@
 
 						<li class="{{request()->is('service') ? 'active' : ''}}">
 							<a href="{{route('service')}}">Dịch Vụ</a>
-							<ul>							
-								<li><a href="{{ route('service1.index')}}">Dịch vụ truyền thông</a></li>							
-								<li><a href="{{ route('service2.index')}}">Dịch vụ máy chủ đám mây</a></li>							
-								<li><a href="{{ route('service3.index')}}">Dịch vụ quảng cáo</a></li>							
-								<li><a href="{{ route('service4.index')}}">Dịch vụ Data Sponsor</a></li>							
-								<li><a href="{{ route('service5.index')}}">Giải pháp camera giám sát</a></li>							
-								<li><a href="{{ route('service6.index')}}">Giải pháp giao thông thông minh</a></li>							
+							<ul id="table">
 							</ul>
 						</li>
 
@@ -61,3 +55,29 @@
 	<!-- header toggler -->
 	<span class="toggle_menu"><span></span></span>
 </header>
+
+@section('script')
+<script>
+	var table = document.getElementById('table');
+	table.innerHTML = '';
+	fetch("{{ route('apiService') }}", {
+			method: 'GET',
+			headers: {
+				'X-Requested-With': 'XMLHttpRequest',
+				'Content-Type': 'application/json',
+			},
+		})
+		.then(res => res.json())
+		.then(data => {
+			console.log(data);
+			data.forEach(service => {
+				table.innerHTML += `
+                <li>
+                    <a href="{{ route('service.details', '') }}/${service.id}">${service.title}</a>
+                </li>
+            `;
+			});
+		})
+		.catch(error => console.error('Error:', error));
+</script>
+@endsection

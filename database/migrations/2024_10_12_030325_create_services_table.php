@@ -13,7 +13,18 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('title');
+            // description
+            $table->text('description');
+            // image
+            $table->string('image')->nullable();
+            // price
+            $table->decimal('price', 10, 2);
+            // features
+            $table->text('features');
+            // status
+            $table->enum('status', ['active', 'inactive'])->default('active');
+            // created_at and updated_at timestamps
             $table->timestamps();
         });
     }

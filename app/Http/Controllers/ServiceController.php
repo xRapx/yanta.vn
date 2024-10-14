@@ -12,13 +12,13 @@ class ServiceController extends Controller
     {
         $services = Service::all();
         Log::info($services);
-        return view('pages.home', compact('services'));
+        return view('admin.content.services', compact('services'));
     }
 
     public function details($id)
     {
         $service = Service::findOrFail($id);
-        return view('services.show', compact('service'));
+        return view('pages.details.service', compact('service'));
     }
 
     /**

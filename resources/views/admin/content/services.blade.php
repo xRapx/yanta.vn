@@ -54,9 +54,11 @@
                     <tr>
                       <th class="border-0">Id</th>
                       <th class="border-0">Title</th>
-                      <th class="border-0">Quantity</th>
+                      <th class="border-0">Description</th>
+                      <th class="border-0">Image</th>
+                      <th class="border-0">Features</th>
+                      <th class="border-0">Price</th>
                       <th class="border-0">Status</th>
-                      <th class="border-0">Date</th>
                       <th class="border-0">Actions</th>
                     </tr>
                   </thead>
@@ -65,7 +67,11 @@
                     <tr>
                       <th>{{$item->id}}</th>
                       <th>{{$item->title}}</th>
-                      <th>{{$item->quantity}}</th>
+                      <th>{{$item->description}}</th>
+                      <th>{{$item->image}}</th>
+                      <th>{{$item->features}}</th>
+                      <th>{{$item->price}}</th>
+                      <th>{{$item->features}}</th>
                       <th>{{$item->status}}</th>
                       <th>{{$item->created_at}}</th>
                       <th>
